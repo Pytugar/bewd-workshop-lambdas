@@ -14,17 +14,38 @@ public class Main {
         Reis mijnReis = new Reis(false);
         VervoerStrategy vervoer = new FietsVervoerStrategy();
         mijnReis.simuleerReis(vervoer);
+        System.out.println("");
 
         System.out.println("Tijdens de spits");
         mijnReis.setSpits(true);
         mijnReis.simuleerReis(vervoer);                   // Met fiets
         mijnReis.simuleerReis(new AutoVervoerStrategy()); // Met auto
         mijnReis.simuleerReis(new OVVervoerStrategy());   // Met OV
+        System.out.println("");
 
         System.out.println("Met <nieuw> vervoer (Stap 2)  ");
-        System.out.println("TODO:");
+        mijnReis.setSpits(true);
+        mijnReis.simuleerReis(vervoer);                   // Met fiets
+        mijnReis.simuleerReis(new AutoVervoerStrategy()); // Met auto
+        mijnReis.simuleerReis(new OVVervoerStrategy());
+        mijnReis.simuleerReis(new AchterOpEenEzelBijEenMexicaanMetEenPonchoEnEenSombrero());
+        System.out.println("");
 
         System.out.println("Met <nieuw> vervoer, lambda edition! (Stap 5)");
-        System.out.println("TODO:");
-    }
+        mijnReis.setSpits(false);
+        VervoerStrategy fiets = (spits) -> 40;
+        VervoerStrategy auto = (spits) -> spits ? 30 : 60;
+        VervoerStrategy OV = (spits) -> { Random randomNumberGenerator = new Random();
+            return randomNumberGenerator.nextInt(90);};
+        VervoerStrategy AchterOpEenEzelBijEenMexicaanMetEenPonchoEnEenSombrero = (spits) -> spits ? 256 : 25;
+
+        System.out.println("Op de fiets:");
+        mijnReis.simuleerReis(fiets);
+        System.out.println("met de Auto:");
+        mijnReis.simuleerReis(auto);
+        System.out.println("Met het OV:");
+        mijnReis.simuleerReis(OV);
+        System.out.println("Op de ezel:");
+        mijnReis.simuleerReis(AchterOpEenEzelBijEenMexicaanMetEenPonchoEnEenSombrero);
+        System.out.println("");    }
 }
