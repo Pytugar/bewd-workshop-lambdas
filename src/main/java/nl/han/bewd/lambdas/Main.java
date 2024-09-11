@@ -38,6 +38,7 @@ public class Main {
         VervoerStrategy OV = (spits) -> { Random randomNumberGenerator = new Random();
             return randomNumberGenerator.nextInt(90);};
         VervoerStrategy AchterOpEenEzelBijEenMexicaanMetEenPonchoEnEenSombrero = (spits) -> spits ? 256 : 25;
+        VervoerStrategy Teleportatie = (spits) -> 0;
 
         System.out.println("Op de fiets:");
         mijnReis.simuleerReis(fiets);
@@ -47,5 +48,7 @@ public class Main {
         mijnReis.simuleerReis(OV);
         System.out.println("Op de ezel:");
         mijnReis.simuleerReis(AchterOpEenEzelBijEenMexicaanMetEenPonchoEnEenSombrero);
+        System.out.println("Teleportatie:");
+        mijnReis.simuleerReis(Teleportatie);
         System.out.println("");    }
 }
